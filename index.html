@@ -125,15 +125,9 @@
         score += 10;
         scoreText.setText('Points: ' + score);
 
-        var count_alive = 0;
-        for (var i = 0; i < bricks.children.length; i++) {
-            if (bricks.children[i].alive === true) {
-                count_alive++;
-            }
-        }
-        if (count_alive === 0) {
+        if (score === brickInfo.count.row * brickInfo.count.col * 10) {
             alert('You won the game, congratulations!');
-            location.reload();;
+            location.reload();
         }
     }
 
