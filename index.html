@@ -56,7 +56,7 @@
 
     function create() {
         game.physics.startSystem(Phaser.Physics.ARCADE);
-        ball = game.add.sprite(game.world.width * .5, game.world.height - 100, 'ball');
+        ball = game.add.sprite(game.world.width * .5, game.world.height - 110, 'ball');
         ball.animations.add('wobble', [0, 1, 0, 2, 0, 1, 0, 2, 0], 24);
         ball.anchor.set(.5);
         game.physics.enable(ball, Phaser.Physics.ARCADE);
@@ -65,11 +65,11 @@
         game.physics.arcade.checkCollision.down = false;
         ball.checkWorldBounds = true;
         ball.events.onOutOfBounds.add(ballLeaveScreen, this);
-        paddle = game.add.sprite(game.world.width * .5, game.world.height - 75, 'paddle');
+        paddle = game.add.sprite(game.world.width * .5, game.world.height - 85, 'paddle');
         paddle.anchor.set(.5, 1);
         game.physics.enable(paddle, Phaser.Physics.ARCADE);
         paddle.body.immovable = true;
-        floor = game.add.sprite(0, game.world.height - 70, 'floor');
+        floor = game.add.sprite(0, game.world.height - 80, 'floor');
         gameWorldCenter = game.world.width * .5;
 
         initBricks();
@@ -81,7 +81,7 @@
         lifeLostText = game.add.text(game.world.width * .5, game.world.height * .5, 'Life lost, click to continue', textStyle);
         lifeLostText.anchor.set(.5);
         lifeLostText.visible = false;
-        startButton = game.add.button(game.world.width * .5, game.world.height * .5, 'clickToStart', startGame, this, 1, 0 ,2);
+        startButton = game.add.button(game.world.width * .5, game.world.height - 40, 'clickToStart', startGame, this, 1, 0 ,2);
         startButton.anchor.set(.5);
     }
 
@@ -145,8 +145,8 @@
         if (lives) {
             livesText.setText('Lives: ' + lives);
             lifeLostText.visible = true;
-            ball.reset(game.world.width * .5, game.world.height - 100);
-            paddle.reset(game.world.width * .5, game.world.height - 75);
+            ball.reset(game.world.width * .5, game.world.height - 110);
+            paddle.reset(game.world.width * .5, game.world.height - 85);
             game.input.onDown.addOnce(function() {
                 lifeLostText.visible = false;
                 ball.body.velocity.set(150, -150);
